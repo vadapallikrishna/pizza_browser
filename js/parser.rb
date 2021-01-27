@@ -1,16 +1,7 @@
 class Parser
-  @identifier
-  @token
 
   def read
   
-  end
-
-  def read_until(c)
-    token = ""
-    while peek != c
-      token = token + read
-    end
   end
 
   def peek
@@ -89,48 +80,48 @@ class Parser
     end 
   end
 
-  def expression
-    op = 
-  end
-  
-  def variable_declaration
-    token = read_keyword
-    if token == false
-       expression
-    end  
-  end
-
-  def block
-    c = read
-    if c == "{"
-      declaration
-      c = read
-      if c == "}"
-        return
-      end
+  def read_assignment_operator
+    token = read_until()
+    if token == "="
+      return "assign"
+    elsif token == "+="
+      return 
+    elsif token == "-="
+      return
+    elsif token == "*="
+      return
+    elsif token == "/="
+      return
+    elsif token == "%="
+      return
+    elsif token == "**="
+      return
+    else
+      return false
     end
   end
 
-  def class_declaration
-    @token = read_keyword
-    if @token == "class"
-      @token = read_keyword
-      if @token == false
-        @identifier = @token
-        if @token == "extends"
-          if @token == false
-            @identifier = @token
-          end
-        end
-        block
-      end
-    end    
+  def read_math_operator
+    token = read_until()
+    if token == "+"
+      return "plus"
+    elsif token == "-"
+      return "minus"
+    elsif token == "*"
+      return "multiply"
+    elsif token == "/"
+      return "division"
+    elsif token == "%"
+      return "modulo"
+    else
+      return false
+    end
   end
 
-  def declaration
-  end
   
-  def program
-      declaration
+  def parse(file)
+    file.each_line do |line|
+      
+    end
   end
 end
